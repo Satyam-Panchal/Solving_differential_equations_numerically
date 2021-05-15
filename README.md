@@ -1,2 +1,4 @@
 # Solving_differential_equations_numerically
 Plots and animations of the solved equations are available. Change the defintion of the get_acceleration function() to change the equation.
+Furthermore, i added two animations, one is showing the position, velocities and accelerations of a pendulum that started moving when an impulse was given to the bob (initially at rest) , ressistance of surrounding was considered 0.2, and impulse caused an initial velocity of 9m/s. This example shows the practicality of this program.
+second is an animation of a moving particle that is moving under an arbritrarily made up force feild such that, a(x, v) = sin(x)+cos(v). Even though their may not exist any force feild that applies such acceleration on a particle, but this program let us see what kind of motion whould occur if such force feild existed.
