@@ -14,7 +14,7 @@ def get_acceleration(position, velocity):
 
 # some global variables
 total_time = 10           # total time of motion
-e = 0.001                     # small time interval
+e = 0.01                     # small time interval
 mass = 3                    # mass of particle(in Kg)
 
 # Provide initial values
@@ -80,35 +80,24 @@ for i in accln_list:
 fig = plt.figure()
 ax = plt.subplot(1, 1, 1)
 
-data_skip  = 50
+data_skip = 10
 #
 def init_func():
     ax.clear()
     plt.xlabel('time')
     plt.ylabel('theta')
 
-def animating_positions(i):
+
+legend = plt.legend()
+def animating(i):
     ax.plot(time_list[i:i+data_skip], pos_list[i:i+data_skip], color='r', label='postions')
+    ax.plot(time_list[i:i + data_skip], vel_list[i:i + data_skip], color='b', label='velocities')
+    ax.plot(time_list[i:i + data_skip], accln_list[i:i + data_skip], color='g', label='acceleration')
     plt.xlim(time_list[0], time_list[-1])
     plt.ylim((-20, 20))
 
-anim = FuncAnimation(fig, animating_positions, frames=np.arange(0, len(time_list), data_skip), init_func=init_func, interval=10)
+anim = FuncAnimation(fig, animating, frames=np.arange(0, len(time_list), data_skip), init_func=init_func, interval=5)
 
-def animating_velocities(i):
-    ax.plot(time_list[i:i+data_skip], vel_list[i:i+data_skip], color='b', label='velocities')
-    plt.xlim(time_list[0], time_list[-1])
-    plt.ylim((-20, 20))
-
-anim1 = FuncAnimation(fig, animating_velocities, frames=np.arange(0, len(time_list), data_skip), init_func=init_func, interval=10)
-
-def animating_acceln(i):
-    ax.plot(time_list[i:i+data_skip], accln_list[i:i+data_skip], color='g', label='acceleration')
-    plt.xlim(time_list[0], time_list[-1])
-    plt.ylim((-20, 20))
-
-anim3 = FuncAnimation(fig, animating_acceln, frames=np.arange(0, len(time_list), data_skip), init_func=init_func, interval=10)
-
-plt.legend()
 plt.show()
 
 
