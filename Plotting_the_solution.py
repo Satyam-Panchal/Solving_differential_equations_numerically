@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from tabulate import  tabulate
 
 # define acceleration in "return"...
 # Caution: use numpy as np
@@ -66,15 +67,28 @@ while t <= total_time:
 pos_list.pop()
 vel_list.pop()
 
+# Creating time_list
+time_list = np.linspace(0, total_time + e/2, len(pos_list))
+
+# creating table
+empty_array = np.empty((len(time_list), 0), float)
+
+empty_array = np.append(empty_array, np.array([time_list]).transpose(), axis=1)
+empty_array = np.append(empty_array, np.array([pos_list]).transpose(), axis=1)
+empty_array = np.append(empty_array, np.array([vel_list]).transpose(), axis=1)
+empty_array = np.append(empty_array, np.array([accln_list]).transpose(), axis=1)
+
+print(tabulate(empty_array))
+
 # Creating Force list
 for i in accln_list:
     force_list.append(mass*i)
 
 # Plotting
 
-plt.plot(np.linspace(0, total_time + e/2, len(pos_list)), pos_list, 'r', label='position')
-plt.plot(np.linspace(0, total_time + e/2, len(vel_list)), vel_list, 'b--', label='velocity')
-plt.plot(np.linspace(0, total_time + e/2, len(accln_list)), accln_list, 'c--', label='acceleration')
+plt.plot(time_list, pos_list, 'r', label='position')
+plt.plot(time_list, vel_list, 'b--', label='velocity')
+plt.plot(time_list, accln_list, 'c--', label='acceleration')
 # plt.plot(np.linspace(0, total_time + e/2, len(force_list)), force_list, 'k--', label='Force')          # uncomment to plot force vs t graph
 
 # Editing Graphs
