@@ -95,7 +95,7 @@ def animating_positions(i):
 anim = FuncAnimation(fig, animating_positions, frames=np.arange(0, len(time_list), data_skip), init_func=init_func, interval=10)
 
 def animating_velocities(i):
-    ax.plot(time_list[i:i+data_skip], vel_list[i:i+data_skip], color='b', label='velocitie')
+    ax.plot(time_list[i:i+data_skip], vel_list[i:i+data_skip], color='b', label='velocities')
     plt.xlim(time_list[0], time_list[-1])
     plt.ylim((-20, 20))
 
