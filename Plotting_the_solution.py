@@ -19,7 +19,7 @@ mass = 3                    # mass of particle(in Kg)
 init_x = 0
 init_v = 0
 
-# creating lists to store positions, velocities, accelerations and time
+# creating lists to store positions, velocities, accelerations and force (with respect to time)
 
 pos_list, vel_list, accln_list, force_list = ([]for i in range(4))
 
